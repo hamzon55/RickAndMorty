@@ -1,7 +1,6 @@
 import Combine
 import Foundation
 
-
 protocol FetchCharacterUseCase {
     func fetchCharacters(name: String?) -> AnyPublisher<CharacterResponse, APIError>
 }
@@ -28,4 +27,3 @@ final class DefaultRickMortyUseCase: FetchCharacterUseCase {
             .eraseToAnyPublisher()
     }
 }
-

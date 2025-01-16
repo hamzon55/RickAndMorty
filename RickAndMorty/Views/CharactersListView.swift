@@ -41,8 +41,12 @@ struct CharactersListView: View {
                 case .succes(let characters):
                     List(characters) { character in
                         VStack(spacing: 0) {
-                            CharacterRow(character: character)
-                                .padding(.horizontal, 16)
+                            NavigationLink(
+                                destination: CharacterDetailView(character: character)
+                            ) {
+                                CharacterRow(character: character)
+                                    .padding(.horizontal, 16)
+                            }
                             Divider()
                         }
                         .listRowInsets(EdgeInsets())

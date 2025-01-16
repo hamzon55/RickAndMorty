@@ -12,15 +12,14 @@ struct CharacterResponse: Codable {
     }
 }
 
-// MARK: - Info
 struct Info: Codable {
     let count, pages: Int
-    let next: String
+    let next: String?
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.count = try container.decode(Int.self, forKey: .count)
         self.pages = try container.decode(Int.self, forKey: .pages)
-        next = try container.decodeIfPresent(String.self, forKey: .next) ?? ""
+        next = try container.decodeIfPresent(String.self, forKey: .next)
     }
 }
