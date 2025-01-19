@@ -1,6 +1,6 @@
 import Foundation
 
-struct Constants {
+public struct Constants {
    public  static let baseUrl = URL(string: "https://rickandmortyapi.com/api")!
    public  static let characterPath = "/character"
    public  static let loadingCaracters = "Loading characters..."

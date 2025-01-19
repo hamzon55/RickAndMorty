@@ -1,6 +1,6 @@
 import Foundation
 
-protocol APIEndpoint {
+public protocol APIEndpoint {
     var baseURL: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
@@ -8,10 +8,11 @@ protocol APIEndpoint {
     var parameters: [String: Any]? { get }
 }
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
     case patch = "PATCH"
     case delete = "DELETE"
 }
+

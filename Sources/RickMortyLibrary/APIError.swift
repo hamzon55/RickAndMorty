@@ -1,5 +1,5 @@
 import Foundation
-enum APIError: Error {
+public enum APIError: Error {
     case networkError(URLError)
     case decodingError(DecodingError)
     case invalidResponse

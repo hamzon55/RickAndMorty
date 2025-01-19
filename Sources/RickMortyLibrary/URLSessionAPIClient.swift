@@ -1,16 +1,16 @@
 import Foundation
 import Combine
 
+public class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
 
-class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
+    public let session: URLSession
     
-    private let session: URLSession
-    
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, any Error> where T : Decodable {
+    // Mas funciones
+   public func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, any Error> where T : Decodable {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = endpoint.parameters?.map { key, value in

@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import RickMortyLibrary
 
 protocol FetchCharacterUseCase {
     func fetchCharacters(name: String?) -> AnyPublisher<CharacterResponse, APIError>
@@ -7,11 +8,11 @@ protocol FetchCharacterUseCase {
 
 final class DefaultRickMortyUseCase: FetchCharacterUseCase {
     
-    private let apiClient: URLSessionAPIClient<RickMortyEndpoint>
+    public let apiClient: URLSessionAPIClient<RickMortyEndpoint>
     
     init(apiClient: URLSessionAPIClient<RickMortyEndpoint>) {
-        self.apiClient = apiClient
-    }
+           self.apiClient = apiClient
+       }
     
     func fetchCharacters(name: String? = nil) -> AnyPublisher<CharacterResponse, APIError> {
         apiClient.request(RickMortyEndpoint.getCharacters(name: name))

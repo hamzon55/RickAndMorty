@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		201BE0B92D3C81BC0042704A /* RickMortyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 201BE0B82D3C81BC0042704A /* RickMortyLibrary */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2071924D2D33DDF200293B22 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				201BE0B92D3C81BC0042704A /* RickMortyLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
+				201BE0B82D3C81BC0042704A /* RickMortyLibrary */,
 			);
 			productName = RickAndMorty;
 			productReference = 2071923C2D33DDF100293B22 /* RickAndMorty.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 207192332D33DDF100293B22;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				201BE0B72D3C81BC0042704A /* XCLocalSwiftPackageReference "../RickMortyLibrary" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2071923D2D33DDF100293B22 /* Products */;
 			projectDirPath = "";
@@ -552,6 +561,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		201BE0B72D3C81BC0042704A /* XCLocalSwiftPackageReference "../RickMortyLibrary" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../RickMortyLibrary;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		201BE0B82D3C81BC0042704A /* RickMortyLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RickMortyLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 207192342D33DDF100293B22 /* Project object */;
 }

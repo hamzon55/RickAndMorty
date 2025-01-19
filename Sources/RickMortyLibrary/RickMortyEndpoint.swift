@@ -1,28 +1,28 @@
 import Foundation
 
-enum RickMortyEndpoint: APIEndpoint {
+public enum RickMortyEndpoint: APIEndpoint {
     
     case getCharacters(name: String?)
     
-    var baseURL: URL {
+    public var baseURL: URL {
         return Constants.baseUrl
     }
     
-    var path: String {
+    public var path: String {
         switch self {
         case .getCharacters:
             return Constants.characterPath
         }
     }
     
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         switch self {
         case .getCharacters:
             return .get
         }
     }
     
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         switch self {
         case .getCharacters(let name):
             if let trimmedName = name?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmedName.isEmpty {
@@ -33,7 +33,7 @@ enum RickMortyEndpoint: APIEndpoint {
     }
     
     
-    var headers: [String: String]? {
+    public var headers: [String: String]? {
         switch self {
         case .getCharacters:
             return ["Content-Type": "application/json"]

@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import Foundation
+import RickMortyLibrary
 
 class RickAndMortyViewModel: ObservableObject, RickAndMortyViewMdelTye {
     
@@ -15,14 +16,14 @@ class RickAndMortyViewModel: ObservableObject, RickAndMortyViewMdelTye {
     private func handleSearch(query: String) -> AnyPublisher<RickAndMortyViewState, Never> {
         self.state = .loading
         return useCase.fetchCharacters(name: query)
-            .map { .succes($0.results) }
+            .map { .success($0.results) }
             .catch { Just(.failure(self.mapError($0))) }
             .eraseToAnyPublisher()
     }
     
     private func fetchCharacters() -> AnyPublisher<RickAndMortyViewState, Never> {
         useCase.fetchCharacters(name: nil)
-            .map { .succes($0.results) }
+            .map { .success($0.results) }
             .catch { Just(.failure(self.mapError($0))) }
             .eraseToAnyPublisher()
     }
