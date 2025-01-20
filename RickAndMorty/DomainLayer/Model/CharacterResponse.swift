@@ -18,6 +18,7 @@ struct Info: Codable {
     let count, pages: Int
     let next: String?
     
+    
     init(count: Int, pages: Int, next: String?) {
         self.count = count
         self.pages = pages

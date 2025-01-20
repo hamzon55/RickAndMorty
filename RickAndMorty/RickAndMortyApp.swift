@@ -5,7 +5,7 @@ import Kingfisher
 struct RickAndMortyApp: App {
     init() {
         configureImageCache()
-
+        
     }
     var body: some Scene {
         WindowGroup {
@@ -14,10 +14,9 @@ struct RickAndMortyApp: App {
         }
     }
     private func configureImageCache() {
-           let cache = ImageCache.default
-           cache.memoryStorage.config.totalCostLimit = 1024 * 1024 * 100
-           cache.diskStorage.config.sizeLimit = 1024 * 1024 * 500
-           cache.diskStorage.config.expiration = .days(7)
-           
-       }
+        let cache = ImageCache.default
+        cache.memoryStorage.config.totalCostLimit = 1024 * 1024 * 100
+        cache.diskStorage.config.sizeLimit = 1024 * 1024 * 500
+        cache.diskStorage.config.expiration = .days(7)
+    }
 }

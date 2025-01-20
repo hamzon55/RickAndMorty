@@ -7,6 +7,12 @@ private enum Layout {
         static let height = CGFloat(300)
         static let radius =  CGFloat(8)
         static let scaleEffect = CGFloat(1.5)
+        static let spacing = CGFloat(20)
+        static let duration = 0.25
+    }
+    enum Seconds {
+        static let maxCount = 3
+        static let seconds = 1
     }
 }
 
@@ -20,9 +26,9 @@ struct CharacterHeaderView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .scaleEffect(Layout.Inset.scaleEffect)
-                }.retry(maxCount: 3, interval: .seconds(1))
+                }.retry(maxCount: Layout.Seconds.maxCount, interval: .seconds(TimeInterval(Layout.Seconds.seconds)))
                 .cacheOriginalImage()
-                .fade(duration: 0.25)
+                .fade(duration: Layout.Inset.duration)
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(Layout.Inset.spacingMedium)
@@ -37,7 +43,7 @@ struct CharacterHeaderView: View {
                 .padding(.horizontal)
                 .shadow(radius: 1)
             
-            HStack(spacing: 20) {
+            HStack(spacing: Layout.Inset.spacing) {
                 Label {
                     Text(character.status.rawValue)
                         .font(.headline)

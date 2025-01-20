@@ -3,6 +3,8 @@ import RickAndMortyLibrary
 struct CharacterDetailView: View {
     @StateObject private var viewModel: CharacterDetailViewModel
     @State private var isEpisodesExpanded = false
+    private let spacing = CGFloat(16)
+    
     init(character: Character,
          episodeDetails: [String] = []) {
         _viewModel = StateObject(wrappedValue:
@@ -14,7 +16,7 @@ struct CharacterDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: spacing) {
                 CharacterHeaderView(character: viewModel.character)
                 Divider()
                     .padding(.horizontal)

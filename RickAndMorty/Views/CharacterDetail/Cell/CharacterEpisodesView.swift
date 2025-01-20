@@ -3,7 +3,8 @@ import RickAndMortyLibrary
 struct CharacterEpisodesView: View {
     let character: Character
     let spaceMedium: CGFloat = 8
-
+    let characterCount = 0
+    
     @State private var isExpanded: Bool = false
     
     var body: some View {
@@ -13,7 +14,7 @@ struct CharacterEpisodesView: View {
                 .fontWeight(.semibold)
                 .padding(.bottom, spaceMedium)
             
-            ForEach(Array(character.episode.prefix(isExpanded ? character.episode.count : 0)
+            ForEach(Array(character.episode.prefix(isExpanded ? character.episode.count : characterCount)
                 .enumerated()), id: \.offset) { index, episode in
                     EpisodeRow(episodeNumber: index + 1)
                 }

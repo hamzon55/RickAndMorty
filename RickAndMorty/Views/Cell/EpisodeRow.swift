@@ -1,5 +1,18 @@
 import SwiftUI
 
+
+private enum Layout {
+    enum Frame {
+        static let widthHeight: CGFloat = 30
+        static let radius: CGFloat = 10
+        static let minRadius: CGFloat = 1
+        static let opacity: CGFloat = 0.1
+    }
+    enum Spacing {
+        static let padding: CGFloat = 8
+
+    }
+}
 struct EpisodeRow: View {
     let episodeNumber: Int
 
@@ -8,10 +21,10 @@ struct EpisodeRow: View {
             Image(systemName: "tv")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 30, height: 30)
+                .frame(width: Layout.Frame.widthHeight, height: Layout.Frame.widthHeight)
                 .foregroundColor(.blue)
-                .padding(8)
-                .background(Circle().fill(Color.blue.opacity(0.1)))
+                .padding(Layout.Spacing.padding)
+                .background(Circle().fill(Color.blue.opacity(Layout.Frame.opacity)))
             
             Text("Episode \(episodeNumber)")
                 .font(.headline)
@@ -21,9 +34,9 @@ struct EpisodeRow: View {
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.gray.opacity(0.1))
+            RoundedRectangle(cornerRadius: Layout.Frame.radius)
+                .fill(Color.gray.opacity(Layout.Frame.opacity))
         )
-        .shadow(radius: 1)
+        .shadow(radius: Layout.Frame.minRadius)
     }
 }

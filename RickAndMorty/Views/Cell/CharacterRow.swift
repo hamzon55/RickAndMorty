@@ -1,11 +1,26 @@
 import SwiftUI
 import RickAndMortyLibrary
+
+private enum Layout {
+    enum Frame {
+        static let widthHeight: CGFloat = 90
+        static let heightVertical: CGFloat = 100
+        static let radius: CGFloat = 2
+    }
+    enum Spacing {
+        static let horizontal: CGFloat = 16
+        static let vertical: CGFloat = 5
+        static let padding: CGFloat = 8
+
+    }
+}
+
 struct CharacterRow: View {
     
     let character: Character
     
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: Layout.Spacing.horizontal) {
             AsyncImage(url: URL(string: character.image)) { image in
                 image
                     .resizable()
@@ -13,11 +28,11 @@ struct CharacterRow: View {
             } placeholder: {
                 ProgressView()
             }
-            .frame(width: 90, height: 90)
+            .frame(width: Layout.Frame.widthHeight, height: Layout.Frame.widthHeight)
             .clipShape(Circle())
-            .shadow(radius: 2)
+            .shadow(radius: Layout.Frame.radius)
             
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: Layout.Spacing.vertical) {
                 Text(character.name)
                     .font(.headline)
                     .multilineTextAlignment(.leading)
@@ -27,10 +42,10 @@ struct CharacterRow: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
             }
-            Spacer().padding(.vertical, 8).frame(height: 100)
+            Spacer().padding(.vertical, Layout.Spacing.padding).frame(height: Layout.Frame.heightVertical)
             
-        }.padding(.vertical, 8)
+        }.padding(.vertical, Layout.Spacing.padding)
             .frame(maxWidth: .infinity)
-            .cornerRadius(8)
+            .cornerRadius(Layout.Spacing.padding)
     }
 }
