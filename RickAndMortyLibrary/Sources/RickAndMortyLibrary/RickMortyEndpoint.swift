@@ -2,8 +2,8 @@ import Foundation
 
 public enum RickMortyEndpoint: APIEndpoint {
     
-    case getCharacters(name: String?)
-    
+    case getCharacters(name: String?, page: Int?)
+
     public var baseURL: URL {
         return Constants.baseUrl
     }
@@ -24,11 +24,15 @@ public enum RickMortyEndpoint: APIEndpoint {
     
     public var parameters: [String: Any]? {
         switch self {
-        case .getCharacters(let name):
+        case .getCharacters(let name, let page):
+            var params: [String: Any] = [:]
             if let trimmedName = name?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmedName.isEmpty {
-                return ["name": trimmedName]
+                params["name"] = trimmedName
             }
-            return nil
+            if let page = page {
+                params["page"] = page
+            }
+            return params.isEmpty ? nil : params
         }
     }
     

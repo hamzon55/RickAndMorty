@@ -31,7 +31,9 @@ struct RickAndMortyViewModelInput {
     let appear: AnyPublisher<Void, Never>
     let disappear: AnyPublisher<Void, Never>
     let search: AnyPublisher<String, Never>
+    let loadNextPage: AnyPublisher<Void, Never> 
     
 }
 
 typealias RickAndMortyViewModelOutput = AnyPublisher<RickAndMortyViewState, Never>
+    

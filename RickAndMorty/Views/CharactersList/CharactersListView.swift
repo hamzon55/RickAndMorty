@@ -20,6 +20,8 @@ struct CharactersListView: View {
     private let onAppearPublisher = PassthroughSubject<Void,Never>()
     private let onDisappearPublisher = PassthroughSubject<Void,Never>()
     private let onSearchPublisher = PassthroughSubject<String, Never>()
+    private let onLoadNextPagePublisher = PassthroughSubject<Void, Never>()
+    
     
     init(viewModel: RickAndMortyViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -42,21 +44,28 @@ struct CharactersListView: View {
                     ProgressView(Constants.loadingCaracters)
                     
                 case .success(let characters):
-                    List(characters) { character in
-                        VStack(spacing: Layout.Spacing.dividerSpacing) {
-                            NavigationLink(
-                                destination: CharacterDetailView(character: character)
-                            ) {
-                                CharacterRow(character: character)
+                    List {
+                        ForEach(characters) { character in
+                            VStack(spacing: Layout.Spacing.dividerSpacing) {
+                                NavigationLink(
+                                    destination: CharacterDetailView(character: character)
+                                ) {
+                                    CharacterRow(character: character)
+                                }
+                                Divider()
                             }
-                            Divider()
+                            .listRowInsets(EdgeInsets(
+                                top: Layout.Spacing.dividerSpacing,
+                                leading: Layout.Inset.rowLeadingInset,
+                                bottom: Layout.Spacing.dividerSpacing,
+                                trailing: Layout.Inset.rowTrailingInset
+                            ))
+                            .onAppear {
+                                if character == characters.last {
+                                    onLoadNextPagePublisher.send()
+                                }
+                            }
                         }
-                        .listRowInsets(EdgeInsets(
-                            top: Layout.Spacing.dividerSpacing,
-                            leading: Layout.Inset.rowLeadingInset,
-                            bottom: Layout.Spacing.dividerSpacing,
-                            trailing: Layout.Inset.rowTrailingInset
-                        ))
                     }
                     .listStyle(PlainListStyle())
                     
@@ -89,7 +98,8 @@ struct CharactersListView: View {
         let input = RickAndMortyViewModelInput(
             appear: onAppearPublisher.eraseToAnyPublisher(),
             disappear: onDisappearPublisher.eraseToAnyPublisher(),
-            search: onSearchPublisher.eraseToAnyPublisher())
+            search: onSearchPublisher.eraseToAnyPublisher(),
+            loadNextPage: onLoadNextPagePublisher.eraseToAnyPublisher())
         
         let output = viewModel.transform(input: input)
         output.receive(on: DispatchQueue.main)
