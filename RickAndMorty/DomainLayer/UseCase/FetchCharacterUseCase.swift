@@ -1,6 +1,6 @@
 import Combine
 import Foundation
-import RickMortyLibrary
+import RickAndMortyLibrary
 
 protocol FetchCharacterUseCase {
     func fetchCharacters(name: String?) -> AnyPublisher<CharacterResponse, APIError>

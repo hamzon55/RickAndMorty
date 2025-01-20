@@ -5,7 +5,7 @@ struct CharacterResponse: Codable {
     let results: [Character]
     
     
-    init(from decoder: any Decoder) throws {
+     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.info = try container.decode(Info.self, forKey: .info)
         self.results = try container.decode([Character].self, forKey: .results)
