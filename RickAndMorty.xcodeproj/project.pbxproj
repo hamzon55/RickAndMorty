@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		201BE0B92D3C81BC0042704A /* RickMortyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 201BE0B82D3C81BC0042704A /* RickMortyLibrary */; };
+		204B89FE2D3D69B9002987BA /* RickAndMortyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 204B89FD2D3D69B9002987BA /* RickAndMortyLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				201BE0B92D3C81BC0042704A /* RickMortyLibrary in Frameworks */,
+				204B89FE2D3D69B9002987BA /* RickAndMortyLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,12 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204B89FC2D3D69B9002987BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		207192332D33DDF100293B22 = {
 			isa = PBXGroup;
 			children = (
 				2071923E2D33DDF100293B22 /* RickAndMorty */,
 				2071924F2D33DDF200293B22 /* RickAndMortyTests */,
 				207192592D33DDF200293B22 /* RickAndMortyUITests */,
+				204B89FC2D3D69B9002987BA /* Frameworks */,
 				2071923D2D33DDF100293B22 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,7 +125,7 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
-				201BE0B82D3C81BC0042704A /* RickMortyLibrary */,
+				204B89FD2D3D69B9002987BA /* RickAndMortyLibrary */,
 			);
 			productName = RickAndMorty;
 			productReference = 2071923C2D33DDF100293B22 /* RickAndMorty.app */;
@@ -202,7 +210,7 @@
 			mainGroup = 207192332D33DDF100293B22;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				201BE0B72D3C81BC0042704A /* XCLocalSwiftPackageReference "../RickMortyLibrary" */,
+				204B89BF2D3D693D002987BA /* XCLocalSwiftPackageReference "RickAndMortyLibrary" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2071923D2D33DDF100293B22 /* Products */;
@@ -563,16 +571,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		201BE0B72D3C81BC0042704A /* XCLocalSwiftPackageReference "../RickMortyLibrary" */ = {
+		204B89BF2D3D693D002987BA /* XCLocalSwiftPackageReference "RickAndMortyLibrary" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../RickMortyLibrary;
+			relativePath = RickAndMortyLibrary;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		201BE0B82D3C81BC0042704A /* RickMortyLibrary */ = {
+		204B89FD2D3D69B9002987BA /* RickAndMortyLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = RickMortyLibrary;
+			package = 204B89BF2D3D693D002987BA /* XCLocalSwiftPackageReference "RickAndMortyLibrary" */;
+			productName = RickAndMortyLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

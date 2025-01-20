@@ -1,11 +1,13 @@
 import SwiftUI
 
+
 struct CharacterOriginLocationView: View {
     let character: Character
-    
+    let leadingSpacing: CGFloat = 8
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Origin")
+        VStack(alignment: .leading, spacing: leadingSpacing) {
+            Text(Constants.origin)
                 .font(.title3)
                 .fontWeight(.semibold)
             
@@ -13,12 +15,20 @@ struct CharacterOriginLocationView: View {
                 .font(.body)
                 .foregroundColor(.secondary)
             
-            Text("Last Known Location")
+            Text(Constants.lastLocation)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.top)
             
             Text(character.location.name)
+                .font(.body)
+                .foregroundColor(.secondary)
+            
+            Text(Constants.gender)
+                .font(.title3)
+                .fontWeight(.semibold)
+            
+            Text(character.gender.rawValue)
                 .font(.body)
                 .foregroundColor(.secondary)
         }
