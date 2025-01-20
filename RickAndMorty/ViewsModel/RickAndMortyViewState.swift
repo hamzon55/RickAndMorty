@@ -7,7 +7,7 @@ protocol RickAndMortyViewMdelTye: AnyObject {
 enum RickAndMortyViewState {
     case idle
     case loading
-    case succes([Character])
+    case success([Character])
     case failure(String)
 }
 
@@ -16,10 +16,12 @@ extension RickAndMortyViewState: Equatable {
         switch (lhs, rhs) {
         case (.idle, .idle):
             return true
-        case (.succes(let lhs), .succes(let rhs)):
+        case (.loading, .loading):
+             return true
+        case (.success(let lhs), .success(let rhs)):
             return lhs.elementsEqual(rhs) { $0.id == $1.id }
-        case (.failure, .failure):
-            return lhs == rhs
+        case (.failure(let lhsError), .failure(let rhsError)):
+            return lhsError == rhsError
         default : return false
         }
     }

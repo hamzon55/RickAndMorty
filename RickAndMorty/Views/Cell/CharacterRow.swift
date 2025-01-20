@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CharacterRow: View {
+    
     let character: Character
     
     var body: some View {
@@ -12,19 +13,20 @@ struct CharacterRow: View {
             } placeholder: {
                 ProgressView()
             }
-            .frame(width: 80, height: 80)
+            .frame(width: 90, height: 90)
             .clipShape(Circle())
             .shadow(radius: 2)
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(character.name)
                     .font(.headline)
-                    .lineLimit(1)
-                Text(character.status.rawValue.capitalized)
-                    .font(.subheadline)
-                    .foregroundColor(character.status == .alive ? .green : .red)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: true, vertical: false)
+                Text(String(format: Constants.episodeCountFormat,
+                            character.episode.count))
+                .font(.subheadline)
+                .foregroundColor(.gray)
             }
-            
             Spacer().padding(.vertical, 8).frame(height: 100)
             
         }.padding(.vertical, 8)

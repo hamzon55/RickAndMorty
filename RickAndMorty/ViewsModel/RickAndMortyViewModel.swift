@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 import Foundation
-import RickMortyLibrary
+import RickAndMortyLibrary
 
 class RickAndMortyViewModel: ObservableObject, RickAndMortyViewMdelTye {
     

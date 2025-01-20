@@ -5,25 +5,28 @@ struct CharacterDetailView: View {
     @State private var isEpisodesExpanded = false
     init(character: Character,
          episodeDetails: [String] = []) {
-        _viewModel = StateObject(wrappedValue: CharacterDetailViewModel(character: character, episodeDetails: episodeDetails))
-    }
+        _viewModel = StateObject(wrappedValue:
+                                    CharacterDetailViewModel(character:
+                                                                character,
+                                                             episodeDetails:
+                                                                episodeDetails)
+        )}
     
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 CharacterHeaderView(character: viewModel.character)
                 Divider()
-                .padding(.horizontal)
+                    .padding(.horizontal)
                 CharacterOriginLocationView(character: viewModel.character)
                 Divider()
-                .padding(.horizontal)
+                    .padding(.horizontal)
                 CharacterEpisodesView(character: viewModel.character)
-
                 Spacer()
             }
             .padding()
         }
-        .navigationTitle("Character Details")
+        .navigationTitle(Constants.characterDetailTitle)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
