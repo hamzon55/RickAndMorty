@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 private enum Layout {
     enum Inset {
@@ -14,17 +15,19 @@ struct CharacterHeaderView: View {
     
     var body: some View {
         VStack(spacing: Layout.Inset.spacingMedium) {
-            AsyncImage(url: URL(string: character.image)) { image in
-                image.resizable()
-                    .scaledToFit()
-                    .cornerRadius(Layout.Inset.spacingMedium)
-                    .shadow(radius: Layout.Inset.radius)
-            } placeholder: {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(Layout.Inset.scaleEffect)
-            }
-            .frame(maxWidth: .infinity, maxHeight:  Layout.Inset.height)
+            KFImage(URL(string: character.image))
+                .placeholder {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(Layout.Inset.scaleEffect)
+                }.retry(maxCount: 3, interval: .seconds(1))
+                .cacheOriginalImage()
+                .fade(duration: 0.25)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(Layout.Inset.spacingMedium)
+                .shadow(radius: Layout.Inset.radius)
+                .frame(maxWidth: .infinity, maxHeight:  Layout.Inset.height)
             
             Text(character.name)
                 .font(.largeTitle)
