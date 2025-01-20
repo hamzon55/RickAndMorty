@@ -9,7 +9,6 @@ public class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
         self.session = session
     }
     
-    // Mas funciones
    public func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, any Error> where T : Decodable {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)

@@ -1,5 +1,5 @@
 import SwiftUI
-
+import RickAndMortyLibrary
 struct CharacterEpisodesView: View {
     let character: Character
     let spaceMedium: CGFloat = 8

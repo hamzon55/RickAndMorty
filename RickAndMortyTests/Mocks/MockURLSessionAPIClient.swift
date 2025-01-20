@@ -1,17 +1,17 @@
+
 import XCTest
 import Combine
-import Foundation
 @testable import RickAndMortyLibrary
 
-class MockAPIClient<EndpointType: APIEndpoint>: APIClient {
-    var mockResult: Result<Data, Error>?
+final class MockURLSessionAPIClient: URLSessionAPIClient<RickMortyEndpoint> {
+    var stubbedResult: Result<Data, Error>?
     
-    func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, Error> where T: Decodable {
-        guard let mockResult = mockResult else {
+    override func request<T: Decodable>(_ endpoint: RickMortyEndpoint) -> AnyPublisher<T, Error> {
+        guard let result = stubbedResult else {
             return Fail(error: APIError.invalidResponse).eraseToAnyPublisher()
         }
         
-        switch mockResult {
+        switch result {
         case .success(let data):
             do {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)

@@ -1,6 +1,6 @@
 import SwiftUI
 import Combine
-
+import RickAndMortyLibrary
 private enum Layout {
     enum Inset {
         static let rowLeadingInset: CGFloat = 16

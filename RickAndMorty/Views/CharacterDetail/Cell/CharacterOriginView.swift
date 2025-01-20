@@ -1,5 +1,5 @@
 import SwiftUI
-
+import RickAndMortyLibrary
 
 struct CharacterOriginLocationView: View {
     let character: Character

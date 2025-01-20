@@ -1,5 +1,3 @@
-import Foundation
-
 struct Character: Identifiable, Codable, Equatable {
     let id: Int
     let name: String
@@ -8,6 +6,24 @@ struct Character: Identifiable, Codable, Equatable {
     let origin, location: Location
     let image: String
     let episode: [String]
+    
+    init(id: Int,
+         name: String,
+         status: Status,
+         gender: Gender,
+         origin: Location,
+         location: Location,
+         image: String,
+         episode: [String]) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+    }
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -19,7 +35,6 @@ struct Character: Identifiable, Codable, Equatable {
         self.location = try container.decode(Location.self, forKey: .location)
         self.image = try container.decode(String.self, forKey: .image)
         self.episode = try container.decode([String].self, forKey: .episode)
-        
     }
 }
 

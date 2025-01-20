@@ -1,5 +1,5 @@
 import SwiftUI
-
+import RickAndMortyLibrary
 struct CharacterDetailView: View {
     @StateObject private var viewModel: CharacterDetailViewModel
     @State private var isEpisodesExpanded = false
